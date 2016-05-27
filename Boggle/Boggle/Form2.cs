@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,7 +19,7 @@ namespace Boggle
 
         public enum Modes
         {
-            Standard, Wildcard
+            Standard, Wildcard, Custom
         }
 
         public Game()
@@ -31,6 +32,7 @@ namespace Boggle
             InitializeComponent();
 
             timeLeft = time;
+            Time.Text = time.ToString();
 
             // Expand the TableLayoutPanel to have enough rows/columns for the specified game type
             for (int i = 1; i <= rowsColumns; i++)
@@ -45,11 +47,19 @@ namespace Boggle
             {
                 case Modes.Standard:
                     GenerateStandardBoard(rowsColumns);
+                    CurrentMode.Text = "Current Mode: Standard";
                     break;
                 case Modes.Wildcard:
                     GenerateWildCardBoard(rowsColumns);
+                    CurrentMode.Text = "Current Mode: Wild Card";
+                    break;
+                case Modes.Custom:
+                    GenerateStandardBoard(rowsColumns);
+                    CurrentMode.Text = "Current Mode: Custom";
                     break;
             }
+
+            GameTimer.Start();
         }
 
         private void GenerateStandardBoard(int boardSize)
@@ -111,6 +121,37 @@ namespace Boggle
                         }, i, j);
                     }
                 }
+            }
+        }
+
+        private void GameTimer_Tick(object sender, EventArgs e)
+        {
+            timeLeft--;
+            Time.Text = timeLeft.ToString();
+            if (timeLeft == 0)
+            {
+                MessageBox.Show("Time's Up!");
+                EndEarly.Text = "Close";
+                SystemSounds.Exclamation.Play();
+            }
+        }
+
+        private void ShowScoreInfo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("< 3 letters: 0 points\n 4 letters: 3 points\n 5 letters: 10 points\n 6 letters: 20 points\n 7 letters: 30 points\n etc...", "Scoring Info");
+        }
+
+        private void EndEarly_Click(object sender, EventArgs e)
+        {
+            if (EndEarly.Text == "End Now")
+            {
+                GameTimer.Stop();
+                Time.Text = "Stopped";
+                EndEarly.Text = "Close";
+            }
+            else
+            {
+                Close();
             }
         }
     }
