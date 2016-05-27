@@ -32,7 +32,7 @@
             this.CurrentMode = new System.Windows.Forms.Label();
             this.ShowScoreInfo = new System.Windows.Forms.Button();
             this.EndEarly = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.GamePanel = new System.Windows.Forms.TableLayoutPanel();
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -66,17 +66,17 @@
             this.EndEarly.Text = "End Now";
             this.EndEarly.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // GamePanel
             // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(13, 67);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(550, 500);
-            this.tableLayoutPanel1.TabIndex = 3;
+            this.GamePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GamePanel.ColumnCount = 1;
+            this.GamePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.GamePanel.Location = new System.Drawing.Point(13, 67);
+            this.GamePanel.Name = "GamePanel";
+            this.GamePanel.RowCount = 1;
+            this.GamePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.GamePanel.Size = new System.Drawing.Size(550, 500);
+            this.GamePanel.TabIndex = 3;
             // 
             // GameTimer
             // 
@@ -87,7 +87,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 661);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.GamePanel);
             this.Controls.Add(this.EndEarly);
             this.Controls.Add(this.ShowScoreInfo);
             this.Controls.Add(this.CurrentMode);
@@ -106,7 +106,7 @@
         private System.Windows.Forms.Label CurrentMode;
         private System.Windows.Forms.Button ShowScoreInfo;
         private System.Windows.Forms.Button EndEarly;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel GamePanel;
         private System.Windows.Forms.Timer GameTimer;
     }
 }

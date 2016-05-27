@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.Title = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ButtonTable = new System.Windows.Forms.TableLayoutPanel();
             this.Start4by4 = new System.Windows.Forms.Button();
             this.Start5by5 = new System.Windows.Forms.Button();
             this.StartWildCard = new System.Windows.Forms.Button();
@@ -39,10 +39,10 @@
             this.TimeInfo = new System.Windows.Forms.Label();
             this.StartCustom = new System.Windows.Forms.Button();
             this.RowColumnInfo = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.RowColumnSelector = new System.Windows.Forms.NumericUpDown();
+            this.ButtonTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TimeSelector)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RowColumnSelector)).BeginInit();
             this.SuspendLayout();
             // 
             // Title
@@ -56,25 +56,25 @@
             this.Title.Text = "KESSON\'S BOGGLE";
             this.Title.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel1
+            // ButtonTable
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.Start4by4, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.Start5by5, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.StartWildCard, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.StartSpeedBoggle, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.Custom, 0, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 33);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(484, 431);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.ButtonTable.ColumnCount = 1;
+            this.ButtonTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ButtonTable.Controls.Add(this.Start4by4, 0, 0);
+            this.ButtonTable.Controls.Add(this.Start5by5, 0, 1);
+            this.ButtonTable.Controls.Add(this.StartWildCard, 0, 2);
+            this.ButtonTable.Controls.Add(this.StartSpeedBoggle, 0, 3);
+            this.ButtonTable.Controls.Add(this.Custom, 0, 4);
+            this.ButtonTable.Location = new System.Drawing.Point(0, 33);
+            this.ButtonTable.Name = "ButtonTable";
+            this.ButtonTable.RowCount = 5;
+            this.ButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ButtonTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ButtonTable.Size = new System.Drawing.Size(484, 431);
+            this.ButtonTable.TabIndex = 1;
             // 
             // Start4by4
             // 
@@ -170,24 +170,24 @@
             this.RowColumnInfo.TabIndex = 5;
             this.RowColumnInfo.Text = "Rows/Columns:";
             // 
-            // numericUpDown1
+            // RowColumnSelector
             // 
-            this.numericUpDown1.Enabled = false;
-            this.numericUpDown1.Location = new System.Drawing.Point(309, 478);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.RowColumnSelector.Enabled = false;
+            this.RowColumnSelector.Location = new System.Drawing.Point(309, 478);
+            this.RowColumnSelector.Maximum = new decimal(new int[] {
             6,
             0,
             0,
             0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
+            this.RowColumnSelector.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(34, 20);
-            this.numericUpDown1.TabIndex = 6;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.RowColumnSelector.Name = "RowColumnSelector";
+            this.RowColumnSelector.Size = new System.Drawing.Size(34, 20);
+            this.RowColumnSelector.TabIndex = 6;
+            this.RowColumnSelector.Value = new decimal(new int[] {
             4,
             0,
             0,
@@ -198,21 +198,21 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 504);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.RowColumnSelector);
             this.Controls.Add(this.RowColumnInfo);
             this.Controls.Add(this.StartCustom);
             this.Controls.Add(this.TimeInfo);
             this.Controls.Add(this.TimeSelector);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.ButtonTable);
             this.Controls.Add(this.Title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "StartPage";
             this.Text = "Boggle";
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.ButtonTable.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TimeSelector)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RowColumnSelector)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,7 +221,7 @@
         #endregion
 
         private System.Windows.Forms.Label Title;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel ButtonTable;
         private System.Windows.Forms.NumericUpDown TimeSelector;
         private System.Windows.Forms.Label TimeInfo;
         private System.Windows.Forms.Button StartCustom;
@@ -231,7 +231,7 @@
         private System.Windows.Forms.Button StartSpeedBoggle;
         private System.Windows.Forms.Button Custom;
         private System.Windows.Forms.Label RowColumnInfo;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown RowColumnSelector;
     }
 }
 
