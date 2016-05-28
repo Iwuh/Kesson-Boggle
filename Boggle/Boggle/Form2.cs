@@ -37,6 +37,7 @@ namespace Boggle
             // Expand the TableLayoutPanel to have enough rows/columns for the specified game type
             for (int i = 1; i <= rowsColumns; i++)
             {
+                // ColumnCount and RowCount need to be manually incremented...
                 GamePanel.ColumnStyles.Add(new ColumnStyle());
                 GamePanel.ColumnCount++;
                 GamePanel.RowStyles.Add(new RowStyle());

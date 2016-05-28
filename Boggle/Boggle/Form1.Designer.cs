@@ -85,6 +85,7 @@
             this.Start4by4.TabIndex = 0;
             this.Start4by4.Text = "4x4";
             this.Start4by4.UseVisualStyleBackColor = true;
+            this.Start4by4.Click += new System.EventHandler(this.Start4by4_Click);
             // 
             // Start5by5
             // 
@@ -95,6 +96,7 @@
             this.Start5by5.TabIndex = 1;
             this.Start5by5.Text = "5x5";
             this.Start5by5.UseVisualStyleBackColor = true;
+            this.Start5by5.Click += new System.EventHandler(this.Start5by5_Click);
             // 
             // StartWildCard
             // 
@@ -105,6 +107,7 @@
             this.StartWildCard.TabIndex = 2;
             this.StartWildCard.Text = "Wild Card";
             this.StartWildCard.UseVisualStyleBackColor = true;
+            this.StartWildCard.Click += new System.EventHandler(this.StartWildCard_Click);
             // 
             // StartSpeedBoggle
             // 
@@ -115,6 +118,7 @@
             this.StartSpeedBoggle.TabIndex = 3;
             this.StartSpeedBoggle.Text = "Speed Boggle";
             this.StartSpeedBoggle.UseVisualStyleBackColor = true;
+            this.StartSpeedBoggle.Click += new System.EventHandler(this.StartSpeedBoggle_Click);
             // 
             // Custom
             // 
@@ -125,6 +129,7 @@
             this.Custom.TabIndex = 4;
             this.Custom.Text = "Custom";
             this.Custom.UseVisualStyleBackColor = true;
+            this.Custom.Click += new System.EventHandler(this.Custom_Click);
             // 
             // TimeSelector
             // 
@@ -159,6 +164,7 @@
             this.StartCustom.TabIndex = 4;
             this.StartCustom.Text = "Start Custom";
             this.StartCustom.UseVisualStyleBackColor = true;
+            this.StartCustom.Click += new System.EventHandler(this.StartCustom_Click);
             // 
             // RowColumnInfo
             // 
