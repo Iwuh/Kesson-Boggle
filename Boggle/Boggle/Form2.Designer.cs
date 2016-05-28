@@ -125,6 +125,7 @@
             this.MinimizeBox = false;
             this.Name = "Game";
             this.Text = "Game";
+            this.Shown += new System.EventHandler(this.Game_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

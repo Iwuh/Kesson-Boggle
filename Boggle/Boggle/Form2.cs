@@ -59,8 +59,6 @@ namespace Boggle
                     CurrentMode.Text = "Current Mode: Custom";
                     break;
             }
-
-            GameTimer.Start();
         }
 
         private void GenerateStandardBoard(int boardSize)
@@ -154,6 +152,11 @@ namespace Boggle
             {
                 Close();
             }
+        }
+
+        private void Game_Shown(object sender, EventArgs e)
+        {
+            GameTimer.Start();
         }
     }
 }

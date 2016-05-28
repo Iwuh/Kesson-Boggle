@@ -36,25 +36,29 @@ namespace Boggle
         private void Start4by4_Click(object sender, EventArgs e)
         {
             CustomSettingsEnabled(false);
-            Application.Run(new Game(180, 4, Game.Modes.Standard));
+            Game gameForm = new Game(180, 4, Game.Modes.Standard);
+            gameForm.ShowDialog();
         }
 
         private void Start5by5_Click(object sender, EventArgs e)
         {
             CustomSettingsEnabled(false);
-            Application.Run(new Game(300, 5, Game.Modes.Standard));
+            Game gameForm = new Game(300, 5, Game.Modes.Standard);
+            gameForm.ShowDialog();
         }
 
         private void StartWildCard_Click(object sender, EventArgs e)
         {
             CustomSettingsEnabled(false);
-            Application.Run(new Game(180, 3, Game.Modes.Wildcard));
+            Game gameForm = new Game(180, 3, Game.Modes.Wildcard);
+            gameForm.ShowDialog();
         }
 
         private void StartSpeedBoggle_Click(object sender, EventArgs e)
         {
             CustomSettingsEnabled(false);
-            Application.Run(new Game(60, 3, Game.Modes.Standard));
+            Game gameForm = new Game(60, 3, Game.Modes.Standard);
+            gameForm.ShowDialog();
         }
 
         private void Custom_Click(object sender, EventArgs e)
@@ -64,7 +68,8 @@ namespace Boggle
 
         private void StartCustom_Click(object sender, EventArgs e)
         {
-            Application.Run(new Game((int)TimeSelector.Value, (int)RowColumnSelector.Value, Game.Modes.Custom));
+            Game gameForm = new Game((int)TimeSelector.Value, (int)RowColumnSelector.Value, Game.Modes.Custom);
+            gameForm.ShowDialog();
         }
     }
 }
