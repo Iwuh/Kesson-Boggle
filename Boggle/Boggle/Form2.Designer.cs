@@ -43,7 +43,7 @@
             this.CurrentMode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CurrentMode.AutoSize = true;
             this.CurrentMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentMode.Location = new System.Drawing.Point(222, 9);
+            this.CurrentMode.Location = new System.Drawing.Point(222, 10);
             this.CurrentMode.Name = "CurrentMode";
             this.CurrentMode.Size = new System.Drawing.Size(143, 25);
             this.CurrentMode.TabIndex = 0;
@@ -73,13 +73,15 @@
             // GamePanel
             // 
             this.GamePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GamePanel.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.GamePanel.ColumnCount = 1;
-            this.GamePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.GamePanel.Location = new System.Drawing.Point(13, 67);
+            this.GamePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.GamePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.GamePanel.Location = new System.Drawing.Point(22, 49);
             this.GamePanel.Name = "GamePanel";
             this.GamePanel.RowCount = 1;
-            this.GamePanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.GamePanel.Size = new System.Drawing.Size(550, 500);
+            this.GamePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.GamePanel.Size = new System.Drawing.Size(540, 540);
             this.GamePanel.TabIndex = 3;
             // 
             // GameTimer
@@ -92,7 +94,7 @@
             this.TimeLeftTitle.AutoSize = true;
             this.TimeLeftTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimeLeftTitle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.TimeLeftTitle.Location = new System.Drawing.Point(150, 583);
+            this.TimeLeftTitle.Location = new System.Drawing.Point(150, 621);
             this.TimeLeftTitle.Name = "TimeLeftTitle";
             this.TimeLeftTitle.Size = new System.Drawing.Size(124, 17);
             this.TimeLeftTitle.TabIndex = 4;
@@ -102,10 +104,11 @@
             // Time
             // 
             this.Time.AutoSize = true;
+            this.Time.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Time.Location = new System.Drawing.Point(280, 583);
+            this.Time.Location = new System.Drawing.Point(280, 621);
             this.Time.Name = "Time";
-            this.Time.Size = new System.Drawing.Size(0, 17);
+            this.Time.Size = new System.Drawing.Size(2, 19);
             this.Time.TabIndex = 5;
             this.Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 

@@ -14,6 +14,8 @@ namespace Boggle
     public partial class Game : Form
     {
         private const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private const float PANELWIDTH = 540.0f;
+        private const float PANELHEIGHT = 540.0f;
 
         private int timeLeft;
 
@@ -33,14 +35,18 @@ namespace Boggle
 
             timeLeft = time;
             Time.Text = time.ToString();
-
+            
+            // Adjust size of original row/column
+            GamePanel.ColumnStyles[0].Width = (100F / rowsColumns) / 100;
+            GamePanel.RowStyles[0].Height = (100F / rowsColumns) / 100;
+            
             // Expand the TableLayoutPanel to have enough rows/columns for the specified game type
-            for (int i = 1; i <= rowsColumns; i++)
+            for (int i = 1; i < rowsColumns; i++)
             {
                 // ColumnCount and RowCount need to be manually incremented...
-                GamePanel.ColumnStyles.Add(new ColumnStyle());
+                GamePanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, (100F / rowsColumns) / 100));
                 GamePanel.ColumnCount++;
-                GamePanel.RowStyles.Add(new RowStyle());
+                GamePanel.RowStyles.Add(new RowStyle(SizeType.Percent, (100F / rowsColumns) / 100));
                 GamePanel.RowCount++;
             }
 
@@ -66,9 +72,9 @@ namespace Boggle
             // Populate each cell with a random letter
             Random rand = new Random();
             //i = current row, j = current column
-            for (int i = 0; i <= boardSize; i++)
+            for (int i = 0; i < boardSize; i++)
             {
-                for (int j = 0; j <= boardSize; j++)
+                for (int j = 0; j < boardSize; j++)
                 {
                     char currentLetter = ALPHABET[rand.Next(0, 26)];
                     GamePanel.Controls.Add(new Label()
@@ -87,25 +93,22 @@ namespace Boggle
         {
             Random rand = new Random();
             //choose random column and row on the board for the wildcard to be placed
-            int[] wildCardLocation = new int[2] {rand.Next(0, boardSize+1), rand.Next(0, boardSize+1) };
+            int[] wildCardLocation = new int[2] {rand.Next(0, boardSize), rand.Next(0, boardSize) };
             //i = current column, j = current row
-            for (int i = 0; i <= boardSize; i++)
+            for (int i = 0; i < boardSize; i++)
             {
-                for (int j = 0; j <= boardSize; j++)
+                for (int j = 0; j < boardSize; j++)
                 {
-                    //If currentLetterIndex is 0 - 25 then it's a letter. If it's 26 then it's the Wildcard.
-                    //int currentLetterIndex = rand.Next(0, 27);
-                    
                     if (i == wildCardLocation[0] && j == wildCardLocation[1])
                     {
-                        PictureBox wildCard = new PictureBox()
+                        GamePanel.Controls.Add(new Label()
                         {
+                            Text = "*",
                             Dock = DockStyle.Fill,
-                            Image = Boggle.Properties.Resources.star,
-                        };
-
-                        GamePanel.Controls.Add(wildCard, i, j);
-                        wildCard.Refresh();
+                            Font = new Font("Bodoni MT", 60F),
+                            BackColor = Color.White,
+                            TextAlign = ContentAlignment.MiddleCenter
+                        }, i, j);
                     }
                     else
                     {
@@ -129,9 +132,10 @@ namespace Boggle
             Time.Text = timeLeft.ToString();
             if (timeLeft == 0)
             {
+                GameTimer.Stop();
+                SystemSounds.Exclamation.Play();
                 MessageBox.Show("Time's Up!");
                 EndEarly.Text = "Close";
-                SystemSounds.Exclamation.Play();
             }
         }
 
