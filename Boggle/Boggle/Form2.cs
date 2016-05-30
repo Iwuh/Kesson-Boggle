@@ -14,8 +14,6 @@ namespace Boggle
     public partial class Game : Form
     {
         private const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private const float PANELWIDTH = 540.0f;
-        private const float PANELHEIGHT = 540.0f;
 
         private int timeLeft;
 
