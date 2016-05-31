@@ -141,9 +141,19 @@
             0,
             0,
             0});
+            this.TimeSelector.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.TimeSelector.Name = "TimeSelector";
             this.TimeSelector.Size = new System.Drawing.Size(64, 20);
             this.TimeSelector.TabIndex = 2;
+            this.TimeSelector.Value = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
             // 
             // TimeInfo
             // 

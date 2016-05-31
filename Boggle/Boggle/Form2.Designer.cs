@@ -43,11 +43,11 @@
             this.CurrentMode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.CurrentMode.AutoSize = true;
             this.CurrentMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CurrentMode.Location = new System.Drawing.Point(222, 10);
+            this.CurrentMode.Location = new System.Drawing.Point(181, 10);
             this.CurrentMode.Name = "CurrentMode";
-            this.CurrentMode.Size = new System.Drawing.Size(143, 25);
+            this.CurrentMode.Size = new System.Drawing.Size(223, 25);
             this.CurrentMode.TabIndex = 0;
-            this.CurrentMode.Text = "Current Mode: ";
+            this.CurrentMode.Text = "Current Mode: Standard";
             this.CurrentMode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ShowScoreInfo
