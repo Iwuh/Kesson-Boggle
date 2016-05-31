@@ -36,6 +36,7 @@
             this.GameTimer = new System.Windows.Forms.Timer(this.components);
             this.TimeLeftTitle = new System.Windows.Forms.Label();
             this.Time = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // CurrentMode
@@ -94,7 +95,7 @@
             this.TimeLeftTitle.AutoSize = true;
             this.TimeLeftTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TimeLeftTitle.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.TimeLeftTitle.Location = new System.Drawing.Point(150, 621);
+            this.TimeLeftTitle.Location = new System.Drawing.Point(71, 621);
             this.TimeLeftTitle.Name = "TimeLeftTitle";
             this.TimeLeftTitle.Size = new System.Drawing.Size(124, 17);
             this.TimeLeftTitle.TabIndex = 4;
@@ -105,18 +106,30 @@
             // 
             this.Time.AutoSize = true;
             this.Time.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Time.Location = new System.Drawing.Point(280, 621);
+            this.Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Time.ForeColor = System.Drawing.Color.Blue;
+            this.Time.Location = new System.Drawing.Point(201, 611);
             this.Time.Name = "Time";
-            this.Time.Size = new System.Drawing.Size(2, 19);
+            this.Time.Size = new System.Drawing.Size(2, 41);
             this.Time.TabIndex = 5;
             this.Time.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(362, 618);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(210, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "https://www.github.com/Iwuh";
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 661);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Time);
             this.Controls.Add(this.TimeLeftTitle);
             this.Controls.Add(this.GamePanel);
@@ -143,5 +156,6 @@
         private System.Windows.Forms.Timer GameTimer;
         private System.Windows.Forms.Label TimeLeftTitle;
         private System.Windows.Forms.Label Time;
+        private System.Windows.Forms.Label label1;
     }
 }
