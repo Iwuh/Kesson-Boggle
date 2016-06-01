@@ -79,7 +79,7 @@ namespace Boggle
                     {
                         Text = currentLetter.ToString(),
                         Dock = DockStyle.Fill,
-                        Font = new Font("Bodoni MT", 20F),
+                        Font = new Font("Bodoni MT", 80F),
                         BackColor = Color.White,
                         TextAlign = ContentAlignment.MiddleCenter
                     }, i, j);
@@ -103,7 +103,7 @@ namespace Boggle
                         {
                             Text = "*",
                             Dock = DockStyle.Fill,
-                            Font = new Font("Bodoni MT", 60F),
+                            Font = new Font("Bodoni MT", 120F),
                             BackColor = Color.White,
                             TextAlign = ContentAlignment.MiddleCenter
                         }, i, j);
@@ -115,7 +115,7 @@ namespace Boggle
                         {
                             Text = currentLetter.ToString(),
                             Dock = DockStyle.Fill,
-                            Font = new Font("Bodoni MT", 20F),
+                            Font = new Font("Bodoni MT", 80F),
                             BackColor = Color.White,
                             TextAlign = ContentAlignment.MiddleCenter
                         }, i, j);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartPage));
             this.Title = new System.Windows.Forms.Label();
             this.ButtonTable = new System.Windows.Forms.TableLayoutPanel();
             this.Start4by4 = new System.Windows.Forms.Button();
@@ -191,12 +192,12 @@
             this.RowColumnSelector.Enabled = false;
             this.RowColumnSelector.Location = new System.Drawing.Point(309, 478);
             this.RowColumnSelector.Maximum = new decimal(new int[] {
-            6,
+            5,
             0,
             0,
             0});
             this.RowColumnSelector.Minimum = new decimal(new int[] {
-            1,
+            2,
             0,
             0,
             0});
@@ -222,6 +223,7 @@
             this.Controls.Add(this.ButtonTable);
             this.Controls.Add(this.Title);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "StartPage";
