@@ -14,6 +14,7 @@ namespace Boggle
     public partial class Game : Form
     {
         private const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        private const string VOWELS = "AEIOU";
 
         private int timeLeft;
 
@@ -67,22 +68,45 @@ namespace Boggle
 
         private void GenerateStandardBoard(int boardSize)
         {
-            // Populate each cell with a random letter
             Random rand = new Random();
+            // Start with 7/10 chance of any letter and 3/10 chance of vowel
+            List<bool> forceVowel = new List<bool>() {false, false, true, false, false, true, false, false, true, false};
             //i = current row, j = current column
             for (int i = 0; i < boardSize; i++)
             {
                 for (int j = 0; j < boardSize; j++)
                 {
-                    char currentLetter = ALPHABET[rand.Next(0, 26)];
-                    GamePanel.Controls.Add(new Label()
+                    if (forceVowel[rand.Next(0, forceVowel.Count)])
                     {
-                        Text = currentLetter.ToString(),
-                        Dock = DockStyle.Fill,
-                        Font = new Font("Bodoni MT", 80F),
-                        BackColor = Color.White,
-                        TextAlign = ContentAlignment.MiddleCenter
-                    }, i, j);
+                        // Pick a random vowel and create a new label
+                        char currentLetter = VOWELS[rand.Next(0, 5)];
+                        GamePanel.Controls.Add(new Label()
+                        {
+                            Text = currentLetter.ToString(),
+                            Dock = DockStyle.Fill,
+                            Font = new Font("Bodoni MT", 80F),
+                            BackColor = Color.White,
+                            TextAlign = ContentAlignment.MiddleCenter
+                        }, i, j);
+                        // Reset forceVowel to default chances
+                        int currentListSize = forceVowel.Count;
+                        forceVowel.RemoveRange(10, forceVowel.Count - 10);
+                    }
+                    else
+                    {
+                        // Pick a random letter of the alphabet and create a new label
+                        char currentLetter = ALPHABET[rand.Next(0, 26)];
+                        GamePanel.Controls.Add(new Label()
+                        {
+                            Text = currentLetter.ToString(),
+                            Dock = DockStyle.Fill,
+                            Font = new Font("Bodoni MT", 80F),
+                            BackColor = Color.White,
+                            TextAlign = ContentAlignment.MiddleCenter
+                        }, i, j);
+                        // Increase chance of next letter being a vowel
+                        forceVowel.Add(true);
+                    }
                 }
             }
         }
