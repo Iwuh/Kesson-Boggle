@@ -13,8 +13,16 @@ namespace Boggle
 {
     public partial class Game : Form
     {
-        private const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        private const string VOWELS = "AEIOU";
+        private char[] ALPHABET = new char[100] {'A', 'A', 'A', 'A' , 'A' , 'A', 'B', 'B', 'C', 'C', 'C', 'D', 'D', 'D', 'D',
+                                                          'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'F', 'F', 'G', 'G', 'G',
+                                                          'H', 'H', 'H', 'H', 'H', 'H', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'J', 'K',
+                                                          'L', 'L', 'L', 'L', 'M', 'M', 'N', 'N', 'N', 'N', 'N', 'N', 'N',
+                                                          'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'P', 'P', 'Q', 'R', 'R', 'R', 'R', 'R', 'R',
+                                                          'S', 'S', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'U', 'U', 'U',
+                                                          'V', 'W', 'W', 'X', 'Y', 'Y', 'Z'};
+
+        private char[] VOWELS = new char[35] {'A', 'A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E',
+                                                       'I', 'I', 'I', 'I', 'I', 'I', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U'};
 
         private int timeLeft;
 
@@ -36,8 +44,8 @@ namespace Boggle
             Time.Text = time.ToString();
             
             // Adjust size of original row/column
-            GamePanel.ColumnStyles[0].Width = (100F / rowsColumns) / 100;
-            GamePanel.RowStyles[0].Height = (100F / rowsColumns) / 100;
+            GamePanel.ColumnStyles[0].Width = (1F / rowsColumns);
+            GamePanel.RowStyles[0].Height = (1F / rowsColumns);
             
             // Expand the TableLayoutPanel to have enough rows/columns for the specified game type
             for (int i = 1; i < rowsColumns; i++)
@@ -47,6 +55,25 @@ namespace Boggle
                 GamePanel.ColumnCount++;
                 GamePanel.RowStyles.Add(new RowStyle(SizeType.Percent, (100F / rowsColumns) / 100));
                 GamePanel.RowCount++;
+            }
+
+            // Shuffle alphabet and variable arrays
+            Random shuffle = new Random();
+            int n = ALPHABET.Length;
+            while (n > 1)
+            {
+                int k = shuffle.Next(n--);
+                char temp = ALPHABET[n];
+                ALPHABET[n] = ALPHABET[k];
+                ALPHABET[k] = temp;
+            }
+            n = VOWELS.Length;
+            while (n > 1)
+            {
+                int k = shuffle.Next(n--);
+                char temp = VOWELS[n];
+                VOWELS[n] = VOWELS[k];
+                VOWELS[k] = temp;
             }
 
             switch (mode)
@@ -69,14 +96,16 @@ namespace Boggle
         private void GenerateStandardBoard(int boardSize)
         {
             Random rand = new Random();
-            // Start with 7/10 chance of any letter and 3/10 chance of vowel
-            List<bool> forceVowel = new List<bool>() {false, false, true, false, false, true, false, false, true, false};
+            // Start with 8/10 chance of any letter and 2/10 chance of vowel
+            List<bool> forceVowel = new List<bool>() {true, false, false, false, false, true, false, false, false, false};
+            // Makes it impossible to force a vowel twice in a row
+            bool forceVowelDisabled = false;
             //i = current row, j = current column
             for (int i = 0; i < boardSize; i++)
             {
                 for (int j = 0; j < boardSize; j++)
                 {
-                    if (forceVowel[rand.Next(0, forceVowel.Count)])
+                    if (forceVowel[rand.Next(0, forceVowel.Count)] && !forceVowelDisabled)
                     {
                         // Pick a random vowel and create a new label
                         char currentLetter = VOWELS[rand.Next(0, 5)];
@@ -89,13 +118,14 @@ namespace Boggle
                             TextAlign = ContentAlignment.MiddleCenter
                         }, i, j);
                         // Reset forceVowel to default chances
-                        int currentListSize = forceVowel.Count;
                         forceVowel.RemoveRange(10, forceVowel.Count - 10);
+                        // Disable vowel force for 1 iteration
+                        forceVowelDisabled = true;
                     }
                     else
                     {
                         // Pick a random letter of the alphabet and create a new label
-                        char currentLetter = ALPHABET[rand.Next(0, 26)];
+                        char currentLetter = ALPHABET[rand.Next(0, 100)];
                         GamePanel.Controls.Add(new Label()
                         {
                             Text = currentLetter.ToString(),
@@ -105,7 +135,14 @@ namespace Boggle
                             TextAlign = ContentAlignment.MiddleCenter
                         }, i, j);
                         // Increase chance of next letter being a vowel
-                        forceVowel.Add(true);
+                        if (forceVowelDisabled)
+                        {
+                            forceVowelDisabled = false;
+                        }
+                        else
+                        {
+                            forceVowel.Add(true);
+                        }
                     }
                 }
             }
@@ -115,7 +152,11 @@ namespace Boggle
         {
             Random rand = new Random();
             //choose random column and row on the board for the wildcard to be placed
-            int[] wildCardLocation = new int[2] {rand.Next(0, boardSize), rand.Next(0, boardSize) };
+            int[] wildCardLocation = new int[2] {rand.Next(0, boardSize), rand.Next(0, boardSize)};
+            // Start with 8/10 chance of any letter and 2/10 chance of vowel
+            List<bool> forceVowel = new List<bool>() { true, false, false, false, false, true, false, false, false, false };
+            // Makes it impossible to force a vowel twice in a row
+            bool forceVowelDisabled = false;
             //i = current column, j = current row
             for (int i = 0; i < boardSize; i++)
             {
@@ -132,9 +173,10 @@ namespace Boggle
                             TextAlign = ContentAlignment.MiddleCenter
                         }, i, j);
                     }
-                    else
+                    else if (forceVowel[rand.Next(0, forceVowel.Count)] && !forceVowelDisabled)
                     {
-                        char currentLetter = ALPHABET[rand.Next(0, 26)];
+                        // Pick a random vowel and create a new label
+                        char currentLetter = VOWELS[rand.Next(0, 5)];
                         GamePanel.Controls.Add(new Label()
                         {
                             Text = currentLetter.ToString(),
@@ -143,6 +185,32 @@ namespace Boggle
                             BackColor = Color.White,
                             TextAlign = ContentAlignment.MiddleCenter
                         }, i, j);
+                        // Reset forceVowel to default chances
+                        forceVowel.RemoveRange(10, forceVowel.Count - 10);
+                        // Disable vowel force for 1 iteration
+                        forceVowelDisabled = true;
+                    }
+                    else
+                    {
+                        // Pick a random letter of the alphabet and create a new label
+                        char currentLetter = ALPHABET[rand.Next(0, 100)];
+                        GamePanel.Controls.Add(new Label()
+                        {
+                            Text = currentLetter.ToString(),
+                            Dock = DockStyle.Fill,
+                            Font = new Font("Bodoni MT", 80F),
+                            BackColor = Color.White,
+                            TextAlign = ContentAlignment.MiddleCenter
+                        }, i, j);
+                        // Increase chance of next letter being a vowel
+                        if (forceVowelDisabled)
+                        {
+                            forceVowelDisabled = false;
+                        }
+                        else
+                        {
+                            forceVowel.Add(true);
+                        }
                     }
                 }
             }
