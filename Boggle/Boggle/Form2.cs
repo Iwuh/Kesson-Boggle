@@ -13,16 +13,15 @@ namespace Boggle
 {
     public partial class Game : Form
     {
-        private char[] ALPHABET = new char[100] {'A', 'A', 'A', 'A' , 'A' , 'A', 'B', 'B', 'C', 'C', 'C', 'D', 'D', 'D', 'D',
-                                                          'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'F', 'F', 'G', 'G', 'G',
-                                                          'H', 'H', 'H', 'H', 'H', 'H', 'I', 'I', 'I', 'I', 'I', 'I', 'I', 'J', 'K',
-                                                          'L', 'L', 'L', 'L', 'M', 'M', 'N', 'N', 'N', 'N', 'N', 'N', 'N',
-                                                          'O', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'P', 'P', 'Q', 'R', 'R', 'R', 'R', 'R', 'R',
-                                                          'S', 'S', 'S', 'S', 'S', 'S', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'U', 'U', 'U',
-                                                          'V', 'W', 'W', 'X', 'Y', 'Y', 'Z'};
+        private readonly string[] ALPHABET = new string[] {"A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "C", "C", "C", "D", "D", "D", "D",
+                                                           "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "F", "F", "G", "G",
+                                                           "H", "H", "H", "H", "H", "H", "I", "I", "I", "I", "I", "I", "I", "J", "K", "L", "L", "L", "L",
+                                                           "M", "M", "M", "N", "N", "N", "N", "N", "N", "O", "O", "O", "O", "O", "O", "O", "P", "P",
+                                                           "Qu", "R", "R", "R", "R", "R", "R", "S", "S", "S", "S", "S", "S", "T", "T", "T", "T", "T",
+                                                           "T", "T", "T", "T", "U", "U", "U", "V", "W", "W", "X", "Y", "Y", "Z"};
 
-        private char[] VOWELS = new char[35] {'A', 'A', 'A', 'A', 'A', 'A', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E', 'E',
-                                                       'I', 'I', 'I', 'I', 'I', 'I', 'O', 'O', 'O', 'O', 'O', 'O', 'O', 'U', 'U', 'U', 'U'};
+        private readonly string[] VOWELS = new string[] {"A", "A", "A", "A", "A", "A", "A", "A", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E",
+                                                         "I", "I", "I", "I", "I", "I", "I", "O", "O", "O", "O", "O", "O", "O", "U", "U", "U"};
 
         private int timeLeft;
 
@@ -57,25 +56,6 @@ namespace Boggle
                 GamePanel.RowCount++;
             }
 
-            // Shuffle alphabet and variable arrays
-            Random shuffle = new Random();
-            int n = ALPHABET.Length;
-            while (n > 1)
-            {
-                int k = shuffle.Next(n--);
-                char temp = ALPHABET[n];
-                ALPHABET[n] = ALPHABET[k];
-                ALPHABET[k] = temp;
-            }
-            n = VOWELS.Length;
-            while (n > 1)
-            {
-                int k = shuffle.Next(n--);
-                char temp = VOWELS[n];
-                VOWELS[n] = VOWELS[k];
-                VOWELS[k] = temp;
-            }
-
             switch (mode)
             {
                 case Modes.Standard:
@@ -108,10 +88,10 @@ namespace Boggle
                     if (forceVowel[rand.Next(0, forceVowel.Count)] && !forceVowelDisabled)
                     {
                         // Pick a random vowel and create a new label
-                        char currentLetter = VOWELS[rand.Next(0, 5)];
+                        string currentLetter = VOWELS[rand.Next(0, VOWELS.Length)];
                         GamePanel.Controls.Add(new Label()
                         {
-                            Text = currentLetter.ToString(),
+                            Text = currentLetter,
                             Dock = DockStyle.Fill,
                             Font = new Font("Bodoni MT", 80F),
                             BackColor = Color.White,
@@ -125,16 +105,16 @@ namespace Boggle
                     else
                     {
                         // Pick a random letter of the alphabet and create a new label
-                        char currentLetter = ALPHABET[rand.Next(0, 100)];
+                        string currentLetter = ALPHABET[rand.Next(0, ALPHABET.Length)];
                         GamePanel.Controls.Add(new Label()
                         {
-                            Text = currentLetter.ToString(),
+                            Text = currentLetter,
                             Dock = DockStyle.Fill,
-                            Font = new Font("Bodoni MT", 80F),
+                            Font = new Font("Bodoni MT", currentLetter == "Qu" ? 50F : 80F),
                             BackColor = Color.White,
                             TextAlign = ContentAlignment.MiddleCenter
                         }, i, j);
-                        // Increase chance of next letter being a vowel
+                        //Increase chance of next letter being a vowel
                         if (forceVowelDisabled)
                         {
                             forceVowelDisabled = false;
@@ -176,10 +156,10 @@ namespace Boggle
                     else if (forceVowel[rand.Next(0, forceVowel.Count)] && !forceVowelDisabled)
                     {
                         // Pick a random vowel and create a new label
-                        char currentLetter = VOWELS[rand.Next(0, 5)];
+                        string currentLetter = VOWELS[rand.Next(0, VOWELS.Length)];
                         GamePanel.Controls.Add(new Label()
                         {
-                            Text = currentLetter.ToString(),
+                            Text = currentLetter,
                             Dock = DockStyle.Fill,
                             Font = new Font("Bodoni MT", 80F),
                             BackColor = Color.White,
@@ -193,12 +173,12 @@ namespace Boggle
                     else
                     {
                         // Pick a random letter of the alphabet and create a new label
-                        char currentLetter = ALPHABET[rand.Next(0, 100)];
+                        string currentLetter = ALPHABET[rand.Next(0, ALPHABET.Length)];
                         GamePanel.Controls.Add(new Label()
                         {
-                            Text = currentLetter.ToString(),
+                            Text = currentLetter,
                             Dock = DockStyle.Fill,
-                            Font = new Font("Bodoni MT", 80F),
+                            Font = new Font("Bodoni MT", currentLetter == "Qu" ? 60F : 80F),
                             BackColor = Color.White,
                             TextAlign = ContentAlignment.MiddleCenter
                         }, i, j);
